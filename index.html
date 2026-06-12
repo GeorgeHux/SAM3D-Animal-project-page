@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="SAM 3D Animal is the first promptable framework for multi-animal 3D reconstruction from a single in-the-wild image, built on SMAL+ with keypoint and mask prompts.">
+  <meta name="keywords" content="SAM 3D Animal, 3D animal reconstruction, multi-animal, promptable, SMAL+, Herd3D">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAM 3D Animal: Promptable Animal 3D Reconstruction from Images in the Wild</title>
+
+  <meta property="og:image" content="resources/og_image.jpg"/>
+  <meta property="og:title" content="SAM 3D Animal: Promptable Animal 3D Reconstruction from Images in the Wild" />
+  <meta property="og:description" content="The first promptable framework for multi-animal 3D reconstruction from a single image in the wild." />
+  <meta property="twitter:card" content="summary" />
+  <meta property="twitter:title" content="SAM 3D Animal: Promptable Animal 3D Reconstruction from Images in the Wild" />
+  <meta property="twitter:description" content="The first promptable framework for multi-animal 3D reconstruction from a single image in the wild." />
+  <meta property="twitter:image" content="resources/og_image.jpg" />
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <br>
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-3 publication-title" style="font-size: 2.0rem;">
+            &#128062; SAM 3D Animal: Promptable Animal 3D Reconstruction from Images in the Wild
+          </h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://georgehux.com/">Xuyi Hu</a><sup>1*</sup>
+            </span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=AtivGZcAAAAJ">Jin Lyu</a><sup>2*</sup>
+            </span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="https://liujiuming123.github.io/">Jiuming Liu</a><sup>1</sup>
+            </span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="https://liuyebin.com/">Yebin Liu</a><sup>3</sup>
+            </span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="https://imati.cnr.it/mypage.php?idk=PG-2">Silvia Zuffi</a><sup>4</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://anl13.github.io/">Liang An</a><sup>3&#8224;</sup>
+            </span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="https://stephanmgoetz.github.io/">Stefan Goetz</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Cambridge</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block"><sup>2</sup>Southern University of Science and Technology</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>3</sup>Tsinghua University</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block"><sup>4</sup>IMATI-CNR, Milan, Italy</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">(* Equal Contribution, &#8224 Corresponding Author)</span>
+          </div>
+
+          <span class="link-block">
+            <a href="https://arxiv.org/abs/2605.07604"
+               class="external-link button is-normal is-rounded is-dark">
+              <span class="icon"><i class="ai ai-arxiv"></i></span>
+              <span>Paper</span>
+            </a>
+          </span>
+
+          <span class="link-block">
+            <a href="https://github.com/GeorgeHux/SAM3D-Animal"
+               class="external-link button is-normal is-rounded is-dark">
+              <span class="icon"><i class="fab fa-github"></i></span>
+              <span>Code</span>
+            </a>
+          </span>
+
+          <span class="link-block">
+            <a href="https://huggingface.co/papers/2605.07604"
+               class="external-link button is-normal is-rounded is-dark">
+              <span class="icon"><i class="fas fa-robot"></i></span>
+              <span>Hugging Face Demo</span>
+            </a>
+          </span>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="resources/teaser.jpg" alt="SAM 3D Animal teaser">
+      <h2 class="subtitle" style="text-align: justify; font-size: 1.2rem;">
+        We present <b>SAM 3D Animal</b>, the first <b>promptable</b> framework for <b>multi-animal 3D reconstruction</b> from a single in-the-wild image.
+        Built on the <b>SMAL+</b> parametric animal model, our method jointly recovers up to 30 animals in one forward pass and accepts optional <b>keypoint</b> and <b>mask</b> prompts to disambiguate crowded and occluded scenes&mdash;without requiring per-instance bounding-box cropping.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            3D animal reconstruction in the wild remains challenging due to large species variation, frequent occlusions, and the prevalence of multi-animal scenes, while existing methods predominantly focus on single-animal settings. We present <b>SAM 3D Animal</b>, the first promptable framework for multi-animal 3D reconstruction from a single image. Built on the SMAL+ parametric animal model, our method jointly reconstructs multiple instances and supports flexible prompts in the form of keypoints and masks which enable more reliable disambiguation in crowded and occluded scenes. To train such a model, we further introduce <b>Herd3D</b>, a multi-animal 3D dataset containing over 5K images, designed to increase diversity in species, interactions, and occlusion patterns. Experiments on the Animal3D, APTv2, and Animal Kingdom datasets show that our framework achieves state-of-the-art results over both existing model-based and model-free methods, demonstrating a scalable and effective solution for prompt-driven animal 3D reconstruction in the wild.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Method Overview</h2>
+        <img src="resources/overview.jpg" alt="SAM 3D Animal model architecture" width="1000">
+        <div class="content has-text-justified">
+          <p>
+            Given a full image, SAM 3D Animal uses a <b>ViT-Huge</b> encoder to extract visual tokens and a <b>SAM-style promptable Transformer decoder</b> to predict SMAL+ shape, pose, camera, and bounding boxes for every animal instance.
+            Unlike SAM 3D Body, which reconstructs one prompted human per forward pass, our model adopts a <b>set-prediction</b> paradigm with DETR-style bipartite matching and predicts up to <b>P = 30</b> animals at once.
+            Optional <b>keypoint prompts</b> provide skeletal alignment cues, while <b>mask prompts</b> sharpen silhouette discrimination when animals overlap.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width has-text-centered">
+        <h2 class="title is-3">Multi-Animal Reconstruction in the Wild</h2>
+        <div class="content has-text-justified">
+          <p>
+            From a single uncropped photograph containing herds, packs, or interacting groups, SAM 3D Animal outputs articulated SMAL+ meshes for all visible animals.
+            The model handles diverse species&mdash;including horses, dogs, antelopes, wolves, cats, and sheep&mdash;and remains robust under heavy mutual occlusion.
+          </p>
+        </div>
+
+        <div class="columns is-multiline">
+          <div class="column is-half">
+            <img src="resources/demo/Antelopes-1024x576__all.jpg" alt="Antelope herd reconstruction">
+          </div>
+          <div class="column is-half">
+            <img src="resources/demo/GroupofhorsesJPG__all.jpg" alt="Horse group reconstruction">
+          </div>
+          <div class="column is-half">
+            <img src="resources/demo/collie-herding-sheep__all.jpg" alt="Sheep and dog reconstruction">
+          </div>
+          <div class="column is-half">
+            <img src="resources/demo/european-wolf-canis-lupus-group-snow-42206039__all.jpg" alt="Wolf pack reconstruction">
+          </div>
+          <div class="column is-half">
+            <img src="resources/demo/cats__all.jpg" alt="Cat group reconstruction">
+          </div>
+        </div>
+        <br>
+
+        <img src="resources/paper_x5.png" alt="Qualitative evaluation of SAM 3D Animal">
+        <p class="has-text-centered is-size-6">
+          Qualitative results on challenging multi-animal scenes with input images and overlay reconstructions.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Promptable Reconstruction</h2>
+        <div class="content has-text-justified">
+          <p>
+            SAM 3D Animal supports two complementary prompt modalities inspired by promptable human mesh recovery:
+          </p>
+          <ul>
+            <li><b>Keypoint prompts</b> align skeletal structure and are especially effective when limbs are partially visible.</li>
+            <li><b>Mask prompts</b> specify instance silhouettes and help separate animals in dense herds.</li>
+          </ul>
+          <p>
+            Even without prompts, the model already achieves competitive performance.
+            With prompts, accuracy improves consistently across Animal3D, APTv2, and Animal Kingdom&mdash;including up to <b>54% AP</b> and <b>80% mAP</b> gains on Animal Kingdom over the strongest baseline, and <b>5.2</b> PA-MPJPE improvement on Animal3D.
+            Ablation studies show that keypoint prompts are the dominant contributor, with performance scaling monotonically as more keypoints are provided.
+          </p>
+        </div>
+        <img src="resources/paper_x10.png" alt="Ablation on number of prompt keypoints">
+        <br><br>
+        <img src="resources/paper_x7.png" alt="Performance under different visibility levels">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Herd3D Dataset</h2>
+        <div class="content has-text-justified">
+          <p>
+            Training multi-instance 3D reconstruction from 2D-only annotations is insufficient for resolving inter-animal occlusions.
+            We introduce <b>Herd3D</b>, a multi-animal 3D dataset with more than <b>5K images</b> and per-instance ground-truth SMAL+ meshes.
+            Building on GenZoo, we adapt the pipeline for multi-animal generation: up to 8 animals are placed on a shared ground plane with controlled layout, expanded pose diversity from Animal3D, and a two-stage <b>Qwen3-VL-8B-Instruct</b> prompting scheme that first predicts per-animal facing directions from the RGB render and then composes a coherent final prompt for <b>Qwen-Image-ControlNet-Union</b> synthesis.
+            Each 1024&times;1024 image includes SMAL+ parameters, 2D/3D keypoints, and bounding boxes.
+          </p>
+        </div>
+
+        <div class="herd3d-pipeline">
+          <div class="herd3d-pipeline__item herd3d-pipeline__item--video">
+            <video autoplay muted preload loop playsinline>
+              <source src="resources/herd3d_qwen.mp4" type="video/mp4">
+            </video>
+            <p>Qwen3-VL prompting</p>
+          </div>
+          <div class="herd3d-pipeline__arrow" aria-hidden="true">&rarr;</div>
+          <div class="herd3d-pipeline__item">
+            <img src="resources/herd3d_controlnet.png" alt="Qwen-ControlNet synthesis">
+            <p>Qwen-ControlNet</p>
+          </div>
+          <div class="herd3d-pipeline__arrow" aria-hidden="true">&rarr;</div>
+          <div class="herd3d-pipeline__item herd3d-pipeline__item--synthetic">
+            <video autoplay muted preload loop playsinline>
+              <source src="resources/herd3d_synthetic.mp4" type="video/mp4">
+            </video>
+            <p>Synthetic image</p>
+          </div>
+        </div>
+        <br>
+
+        <img src="resources/paper_x3.png" alt="Herd3D dataset example">
+        <br><br>
+        <img src="resources/paper_x8.png" alt="Herd3D multi-animal dataset samples">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Comparisons &amp; Ablations</h2>
+        <div class="content has-text-justified">
+          <p>
+            We compare against state-of-the-art model-based and model-free animal mesh recovery methods on Animal3D, APTv2, and Animal Kingdom.
+            SAM 3D Animal consistently produces more accurate poses and shapes in both single-animal and multi-animal settings.
+            Ablations confirm that Herd3D pre-training, keypoint prompting, and mask prompting each contribute to the final performance.
+          </p>
+        </div>
+        <img src="resources/paper_x4.png" alt="Qualitative comparisons on Animal3D, Animal Kingdom and APT-36K">
+        <br><br>
+        <img src="resources/paper_x6.png" alt="Ablation studies">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{hu2026sam3danimal,
+  title   = {SAM 3D Animal: Promptable Animal 3D Reconstruction from Images in the Wild},
+  author  = {Hu, Xuyi and Lyu, Jin and Liu, Jiuming and Liu, Yebin and Zuffi, Silvia and An, Liang and Goetz, Stefan},
+  journal = {arXiv preprint arXiv:2605.07604},
+  year    = {2026}
+}</code></pre>
+  </div>
+</section>
+
+<section class="section" id="References">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Related Work</h2>
+    <a href="https://ai.meta.com/research/publications/sam-3d-body-robust-full-body-human-mesh-recovery/">SAM 3D Body: Robust Full-Body Human Mesh Recovery.</a><br/>
+    <a href="https://anl13.github.io/AniMer/">AniMer: Animal Pose and Shape Estimation Using Family Aware Transformer. <em>CVPR 2025</em>.</a><br/>
+    <a href="https://arxiv.org/abs/2508.00298">AniMer+: Unified Pose and Shape Estimation Across Mammalia and Aves. <em>TPAMI 2025</em>.</a><br/>
+    <a href="https://arxiv.org/abs/2401.02400">3D-Fauna: Learning the 3D Fauna of the Web. <em>CVPR 2024</em>.</a><br/>
+    <a href="https://3dmagicpony.github.io/">MagicPony: Learning Articulated 3D Animals in the Wild. <em>CVPR 2023</em>.</a><br/>
+    <a href="https://xujiacong.github.io/Animal3D/">Animal3D: A Comprehensive Dataset for Animal 3D Pose Estimation. <em>ICCV 2023</em>.</a><br/>
+    <a href="https://genzoo.is.tue.mpg.de/">GenZoo: Generative Zoo. <em>ICCV 2025</em>.</a><br/>
+    <a href="https://awol.is.tue.mpg.de/">AWOL: Analysis WithOut synthesis using Language. <em>ECCV 2024</em>.</a><br/>
+    <a href="https://prompt-hmr.github.io/">PromptHMR: Promptable Human Mesh Recovery.</a><br/>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This webpage template is adapted from
+            <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>,
+            <a href="https://3dmagicpony.github.io/">MagicPony</a>,
+            <a href="https://kyleleey.github.io/3DFauna/">3D-Fauna</a> and
+            <a href="https://cs.stanford.edu/~yzzhang/projects/rose/">Rose</a>,
+            under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0 License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
