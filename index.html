@@ -117,7 +117,9 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="resources/teaser.jpg" alt="SAM 3D Animal teaser">
+      <video autoplay muted preload loop playsinline>
+        <source src="resources/teaser.mp4" type="video/mp4">
+      </video>
       <h2 class="subtitle" style="text-align: justify; font-size: 1.2rem;">
         We present <b>SAM 3D Animal</b>, the first <b>promptable</b> framework for <b>multi-animal 3D reconstruction</b> from a single in-the-wild image.
         Built on the <b>SMAL+</b> parametric animal model, our method jointly recovers up to 30 animals in one forward pass and accepts optional <b>keypoint</b> and <b>mask</b> prompts to disambiguate crowded and occluded scenes&mdash;without requiring per-instance bounding-box cropping.
@@ -171,25 +173,6 @@
           </p>
         </div>
 
-        <div class="columns is-multiline">
-          <div class="column is-half">
-            <img src="resources/demo/Antelopes-1024x576__all.jpg" alt="Antelope herd reconstruction">
-          </div>
-          <div class="column is-half">
-            <img src="resources/demo/GroupofhorsesJPG__all.jpg" alt="Horse group reconstruction">
-          </div>
-          <div class="column is-half">
-            <img src="resources/demo/collie-herding-sheep__all.jpg" alt="Sheep and dog reconstruction">
-          </div>
-          <div class="column is-half">
-            <img src="resources/demo/european-wolf-canis-lupus-group-snow-42206039__all.jpg" alt="Wolf pack reconstruction">
-          </div>
-          <div class="column is-half">
-            <img src="resources/demo/cats__all.jpg" alt="Cat group reconstruction">
-          </div>
-        </div>
-        <br>
-
         <img src="resources/paper_x5.png" alt="Qualitative evaluation of SAM 3D Animal">
         <p class="has-text-centered is-size-6">
           Qualitative results on challenging multi-animal scenes with input images and overlay reconstructions.
@@ -241,22 +224,28 @@
         </div>
 
         <div class="herd3d-pipeline">
-          <div class="herd3d-pipeline__item herd3d-pipeline__item--video">
-            <video autoplay muted preload loop playsinline>
-              <source src="resources/herd3d_qwen.mp4" type="video/mp4">
-            </video>
+          <div class="herd3d-pipeline__row herd3d-pipeline__row--media">
+            <div class="herd3d-pipeline__item herd3d-pipeline__item--video">
+              <video autoplay muted preload loop playsinline>
+                <source src="resources/herd3d_qwen.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="herd3d-pipeline__arrow" aria-hidden="true">&rarr;</div>
+            <div class="herd3d-pipeline__item">
+              <img src="resources/Controlnet.png" alt="Qwen-ControlNet synthesis">
+            </div>
+            <div class="herd3d-pipeline__arrow" aria-hidden="true">&rarr;</div>
+            <div class="herd3d-pipeline__item herd3d-pipeline__item--synthetic">
+              <video autoplay muted preload loop playsinline>
+                <source src="resources/herd3d_synthetic.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="herd3d-pipeline__row herd3d-pipeline__row--labels">
             <p>Qwen3-VL prompting</p>
-          </div>
-          <div class="herd3d-pipeline__arrow" aria-hidden="true">&rarr;</div>
-          <div class="herd3d-pipeline__item">
-            <img src="resources/herd3d_controlnet.png" alt="Qwen-ControlNet synthesis">
+            <span class="herd3d-pipeline__arrow-spacer" aria-hidden="true"></span>
             <p>Qwen-ControlNet</p>
-          </div>
-          <div class="herd3d-pipeline__arrow" aria-hidden="true">&rarr;</div>
-          <div class="herd3d-pipeline__item herd3d-pipeline__item--synthetic">
-            <video autoplay muted preload loop playsinline>
-              <source src="resources/herd3d_synthetic.mp4" type="video/mp4">
-            </video>
+            <span class="herd3d-pipeline__arrow-spacer" aria-hidden="true"></span>
             <p>Synthetic image</p>
           </div>
         </div>
