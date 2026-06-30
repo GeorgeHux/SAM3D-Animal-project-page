@@ -169,14 +169,28 @@
         <div class="content has-text-justified">
           <p>
             From a single uncropped photograph containing herds, packs, or interacting groups, SAM 3D Animal outputs articulated SMAL+ meshes for all visible animals.
-            The model handles diverse species&mdash;including horses, dogs, antelopes, wolves, cats, and sheep&mdash;and remains robust under heavy mutual occlusion.
+            The model handles diverse species and remains robust under heavy mutual occlusion.
           </p>
         </div>
 
-        <img src="resources/paper_x5.png" alt="Qualitative evaluation of SAM 3D Animal">
-        <p class="has-text-centered is-size-6">
-          Qualitative results on challenging multi-animal scenes with input images and overlay reconstructions.
-        </p>
+        <div class="recon-showcase">
+          <div class="recon-showcase__item">
+            <video autoplay controls muted preload loop playsinline>
+              <source src="resources/recon_demo.mp4" type="video/mp4">
+            </video>
+            <p class="recon-showcase__caption">
+              Multi-animal reconstruction showcase: original image, overlay reveal, mesh travel, and 3D rotation.
+            </p>
+          </div>
+          <div class="recon-showcase__item">
+            <video autoplay controls muted preload loop playsinline>
+              <source src="resources/recon_back_images_new_demo.mp4" type="video/mp4">
+            </video>
+            <p class="recon-showcase__caption">
+              Additional in-the-wild examples with diverse species, occlusions, and group interactions.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

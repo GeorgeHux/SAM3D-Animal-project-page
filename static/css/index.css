@@ -304,3 +304,27 @@ body {
   width: 1.6rem;
   padding: 0 0.15rem;
 }
+
+.recon-showcase {
+  margin: 2rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.recon-showcase__item video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  background: #fafbfc;
+}
+
+.recon-showcase__caption {
+  margin: 0.85rem 0 0;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #4a5568;
+  line-height: 1.5;
+}
